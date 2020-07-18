@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity{
                             public void onSuccess(Location location) {
                                 if(location!=null) {
                                     Log.e("TAG", "" + location.getLatitude());
+                                    Toast.makeText(MainActivity.this, ""+location.getLatitude(), Toast.LENGTH_SHORT).show();
 
                                 }
                             }

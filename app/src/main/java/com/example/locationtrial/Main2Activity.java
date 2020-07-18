@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -30,6 +31,7 @@ public class Main2Activity extends AppCompatActivity {
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(10 * 1000); // 10 seconds
         locationRequest.setFastestInterval(5 * 1000); // 5 seconds
+        
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,9 +44,12 @@ public class Main2Activity extends AppCompatActivity {
                             ArrayList<Location> arrayList= (ArrayList<Location>) locationResult.getLocations();
 
                             Log.e("TAG",""+arrayList.get(0).getLatitude());
+                            Toast.makeText(Main2Activity.this, ""+arrayList.get(0).getLatitude(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 },null);
+
             }
         });
 
